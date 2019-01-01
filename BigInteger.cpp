@@ -98,6 +98,47 @@ class BigInteger{
         return b;
     }
 
+    BigInteger operator /(BigInteger &b2){//not done yet
+        BigInteger b;
+        if(b2.value.length() > value.length()){
+            b.value = (char)0;
+            return b;
+        }
+        string temp = "";
+
+    }
+
+    bool operator > (BigInteger &b2){
+        if(b2.value.length() > value.length())return false;
+        if(b2.value.length() < value.length())return true;
+
+        for(int i = value.length()-1; i >= 0 ; i--){
+            if(b2.value[i] < value[i])return true;
+            if(b2.value[i] > value[i])return false;
+        }
+        return false;
+    }
+
+   bool operator < (BigInteger &b2){
+        if(b2.value.length() > value.length())return true;
+        if(b2.value.length() < value.length())return false;
+
+        for(int i = value.length()-1; i >= 0 ; i--){
+            if(b2.value[i] < value[i])return false;
+            if(b2.value[i] > value[i])return true;
+        }
+        return false;
+    }
+
+    bool operator == (BigInteger &b2){
+        if(b2.value.length() != value.length())return false;
+
+        for(int i = value.length()-1; i >= 0 ; i--){
+            if(b2.value[i] != value[i])return false;
+        }
+        return true;
+    }
+
     string getValue(){
         string svalue;
         for(int i=0;i<value.length();i++)svalue+=value.at(value.length()-1-i)+(char)48;
@@ -118,6 +159,12 @@ class BigInteger{
 
 
 int main(){
+
+    BigInteger b1(34535) , b2(2894) , b3 (2894);
+
+    cout<<( b1 == b3 )<<( endl )<<( b2 == b3 )<<( endl )<<( b3 > b1 )<<( endl )<<( b2 > b3 )<<( endl )<<( b1 > b2) << endl;
+
+    exit(0);
     int n;
     while(n!=-1){
         BigInteger b1(1),b2;
